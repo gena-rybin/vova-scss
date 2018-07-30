@@ -1,0 +1,78 @@
+@import '../../../../assets/scss/variables';
+@import '../../../../assets/scss/mixins';
+
+.slider-window{
+  max-width: 400px;
+  margin: 1px;
+  padding: 4px;
+  background: $white;
+  border: 1px solid $main-blue;
+  //@include edited;
+
+  .slider-wrapper{
+    margin: 4px 8px;
+  }
+
+  .slider-editor{
+    height: 200px;
+    margin: 4px 8px;
+    background: $white;
+    border: 1px solid $light-grey;
+    display: flex;
+    flex-wrap: wrap;
+    @include mobile {
+      border: 1px solid $light-grey;
+    }
+    .slide-wrapper{
+      display: inline-block;
+      flex: 0 50%;
+      position: relative;
+      box-sizing:border-box;
+      border: 1px solid $light-grey;
+      background-color: $light-grey;
+      & label{
+        font-size: 0;
+        & span {
+          cursor: pointer;
+          background: url(/assets/img/plus-icon-white.png) no-repeat center;
+          background-color: $light-grey;
+          background-position: 52% 52%;
+          width: 100%;
+          height: 100%;
+          display: block;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      }
+      & #image-loaded{
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+        display: block;
+        background-position: center !important;
+        background-size: cover !important;
+        z-index: 10;
+        position: relative;
+        top: -20px;
+      }
+      & input{
+        width: 100%;
+        display: none;
+      }
+      .removeBtn{
+        position: absolute;
+        cursor: pointer;
+        top: 5px;
+        left: 23px;
+        z-index: 11;
+      }
+
+    }
+  }
+  &.edited {
+    background: $light-grey;
+    border: 1px solid $main-blue;
+    color: $white;
+  }
+}

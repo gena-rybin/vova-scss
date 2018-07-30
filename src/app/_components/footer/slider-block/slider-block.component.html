@@ -1,0 +1,31 @@
+<div #sliderWindow class="slider-window">
+  <!--<div class="slider-wrapper" (click)="openEditor(true)">-->
+    <!--<app-slider></app-slider>-->
+  <!--</div>-->
+
+  <div *ngIf="isOpen" class="slider-editor">
+    <ng-container *ngFor="let slide of slides; let i=index">
+      <div class="slide-wrapper">
+
+        <label for="image-input-{{i}}">Add image
+            <div id="image-loaded" *ngIf="slides[i] && slides[i].length"
+                 [ngStyle]="{'background': 'url(' + slides[i] + ') no-repeat'}">
+            </div>
+            <div *ngIf="slides[i] && slides[i].length"
+                 class="removeBtn"
+                 (click)="removeSlide(i); $event.stopPropagation(); false">
+                <span>
+                  <svg-ico source="assets/img/icons/close.svg"></svg-ico>
+                </span>
+            </div>
+            <span *ngIf="i===0 || (!slides[i].length && slides[i-1].length)"></span>
+        </label>
+
+        <input id="image-input-{{i}}" type="file"
+               (change)="fileChangeImage(i, $event)"
+               accept=".jpg, .jpeg, .bmp, .png, .JPG, .JPEG"/>
+
+      </div>
+    </ng-container>
+  </div>
+</div>

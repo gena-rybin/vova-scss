@@ -1,0 +1,50 @@
+<header dir="rtl" class="header">
+    <div class="container">
+        <div class="logo-block logo"  (click)="editWindow('header', 'logo')">
+            <img [src]="getImg()" alt="logo" />
+        </div>
+        <div class="nav-block">
+            <div class="wrap">
+                <div class="contacts" (click)="editWindow('header', 'contacts')">
+                    <p [ngStyle]="getStyle('contacts', 'contactUs', 0, 0)">contact us</p>
+                    <div class="tel-block">
+                        <a [ngStyle]="getStyle('contacts', 'phone', 0, 0)">{{getText('contacts', 'title', 0, 1)}}</a>
+                        <a [ngStyle]="getStyle('contacts', 'phone', 0, 0)">{{getText('contacts', 'subtitle', 0, 1)}}</a>
+                    </div>
+                </div>
+                <div class="user-menu user" (click)="editWindow('header', 'user')">
+                    <div class="sign-in">
+                        <span class="icon-holder">
+                            <i class="icon-user" [ngStyle]="getStyle('user', 'iconColor', 2, 1)"></i>
+                        </span>
+                        <span [ngStyle]="getStyle('user', 'userTextColor', 2, 0)">Sign in </span>
+                    </div>
+                    <div class="cart-info">
+                        <span [ngStyle]="getStyle('user', 'userTextColor', 2, 0)"><bdi>(0 items, 0$)</bdi></span>
+                        <span class="icon-holder">
+                            <i class="icon-shopping_cart" [ngStyle]="getStyle('user', 'iconColor', 2, 1)"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="line-search">
+                <div class="input-block search" (click)="editWindow('header', 'search')" [ngStyle]="getStyle('search', 'searchBorder', 1, 1)">
+                    <div class="search-variety">
+                        <ul [ngStyle]="getStyle('search', 'searchTextColor', 1, 0)">
+                            <li key="number" class="active" [ngStyle]="getStyle('search', ['activeTextColor', 'activeBg'], 1, 2)">חיפוש לפי מק״ט</li>
+                            <li key="models" [ngStyle]="getStyle('search', 'searchBorder', 1, 1)">חיפוש לפי מודל</li>
+                            <li key="smart" [ngStyle]="getStyle('search', 'searchBorder', 1, 1)">חיפוש חכם</li>
+                        </ul>
+                    </div>
+                    <div class="input-wrap" [ngStyle]="getStyle('search', 'searchBorder', 1, 1)">
+                        <input type="text" placeholder="הקלידו מספר קטלוגי"/>
+                        <span class="icon-holder">
+                            <svg-ico source="assets/img/icons/search.svg"></svg-ico>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

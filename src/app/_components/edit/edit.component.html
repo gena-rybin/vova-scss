@@ -1,0 +1,81 @@
+<div class="editor-toggled-wrapper" *ngIf="editBlock">
+    <div class="editor-saving">
+        <div class="save">Save</div>
+        <div class="cancel" (click)="close('block')">Cancel</div>
+    </div>
+</div>
+<div class="edit-window" dir="rtl" *ngIf="isOpen" [ngStyle]="editorPosition">
+    <div class="edit-header">
+        <div class="name">{{editorField.title}}</div>
+        <div class="control-btns">
+            <span>
+                <svg-ico source="assets/img/icons/question.svg"></svg-ico>
+            </span>
+            <span (click)="close('popup')">
+                <svg-ico source="assets/img/icons/close.svg"></svg-ico>
+            </span>
+        </div>
+    </div>
+    <main *ngIf="(editorField.title !== 'Logo')
+              && (editorField.title !== 'Slider')">
+        <ul class="edit-tabs">
+            <li *ngFor="let item of editorField.editTabs" [ngClass]="{'active': activeTab === item.tabName}" (click)="activeTab = item.tabName">{{item.tabName}}</li>
+        </ul>
+        <ng-container *ngFor=" let tab of editorField.editTabs">
+            <div class="edit-content" *ngIf="tab.tabName === activeTab">
+                <div class="input-wrap" *ngFor="let input of tab.inputFields">
+                    <label>{{input.labelText}}</label>
+                    <input [attr.type]="input.type"
+                           [value]="input.value"
+                           class="form-control"
+                           [placeholder]="input.placeholder"
+                           (change)="editInput($event, input)"
+                           (keyup)="editInput($event, input)"
+                    />
+                </div>
+            </div>
+        </ng-container>
+    </main>
+    <main *ngIf="editorField.title === 'Logo'" class="logo-edit">
+        <div class="cropper-wrapper">
+            <div class="logo-input-wrap" *ngIf="!cropperReady">
+                <img class="logo-input-placeholder" src="../../../assets/img/logo-placeholder.png" alt="" />
+                <input type="file" class="logo-input" (change)="fileChangeEvent($event)" />
+            </div>
+            <div>
+                <app-img-cropper
+                        [imageChangedEvent]="imageChangedEvent"
+                        [maintainAspectRatio]="false"
+                        [resizeToWidth]="360"
+                        [onlyScaleDown]="false"
+                        format="png, jpg"
+                        (imageCroppedBase64)="imageCroppedBase64($event)"
+                        (imageLoaded)="imageLoaded()"
+                        (loadImageFailed)="loadImageFailed()"
+                        [style.display]="cropperReady ? null : 'none'"
+                ></app-img-cropper>
+            </div>
+        </div>
+        <div class="slider-wrapper">
+            <mat-slider  [displayWith]="formatLabel"
+                         min="0"
+                         max="100"
+                         value="100"
+                         tickInterval="3"
+                         [step]="5"
+                         thumbLabel
+            ></mat-slider>
+            <div>{{logoWidth}}</div>
+        </div>
+
+
+        <p>{{editorField.editTabs[0].helpText}}</p>
+    </main>
+
+    <main *ngIf="editorField.title === 'Slider'" class="slider-edit">
+      <app-slider-block></app-slider-block>
+    </main>
+
+
+</div>
+

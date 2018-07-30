@@ -1,0 +1,143 @@
+@import '../../../assets/scss/variables.scss';
+@import '../../../assets/scss/mixins.scss';
+
+.header {
+  height: 130px;
+  background: #5b7c8d;
+  box-sizing: border-box;
+  position: relative;
+  .container {
+    display: flex;
+    align-items: center;
+    .nav-block {
+      .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .user-menu {
+          display: flex;
+          @include edited;
+        }
+        .contacts {
+          display: flex;
+          align-items: center;
+          position: relative;
+          @include edited;
+          .tel-block {
+            a {
+              color: #fff;
+            }
+          }
+
+          p {
+            color: #60c9ff;
+          }
+        }
+      }
+
+    }
+    .logo-block {
+      width: 360px;
+      background: #222628;
+      height: 130px;
+      box-sizing: border-box;
+      @include edited;
+    }
+  }
+
+}
+
+.input-block {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  @include edited;
+  border: 1px solid #fff;
+  @include mobile {
+    flex-direction: column;
+  }
+  .search-variety {
+    color: $white;
+    position: relative;
+    ul {
+      display: flex;
+      @include mobile {
+        border: 1px solid #000;
+      }
+      li {
+        border-left: 1px solid $white;
+        min-height: 47px;
+        padding: 0 18px;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        text-align: right;
+        cursor: pointer;
+        width: 114px;
+        box-sizing: border-box;
+        &.active {
+          background: $main-blue;
+          color: $white;
+        }
+        @include mobile {
+          border-color: #000;
+          color: #000;
+        }
+      }
+    }
+  }
+  .input-wrap {
+    position: relative;
+    .icon-holder {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      &:after {
+        position: absolute;
+        left: -12px;
+        top: 13px;
+        content: '';
+        background: $white;
+        width: 2px;
+        height: 22px;
+        opacity: .2;
+      }
+    }
+    input {
+      width: 200px;
+      height: 47px;
+      background: rgba(0, 0, 0, 0.63);
+      border: none;
+      color: $white;
+      padding: 0 62px 0 10px;
+      font: 700 16px/22px 'Open Sans Hebrew';
+      box-sizing: border-box;
+      &::-webkit-input-placeholder {
+        color: #fff;
+      }
+      &::-moz-placeholder {
+        color: #fff;
+      }
+      &:-ms-input-placeholder {
+        color: #fff;
+      }
+      &:-moz-placeholder {
+        color: #fff;
+      }
+      &:focus {
+        outline: none;
+      }
+      @include desktop {
+        width: 450px;
+      }
+      @include mobile {
+        border-color: #000;
+      }
+    }
+  }
+
+}

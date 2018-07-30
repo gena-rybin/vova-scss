@@ -1,0 +1,24 @@
+@import '../../../assets/scss/variables.scss';
+@import '../../../assets/scss/mixins.scss';
+
+.footer {
+  min-height: 200px;
+  background: $white;
+  box-sizing: border-box;
+  position: relative;
+  .container {
+    align-items: center;
+    .slider-wrapper {
+      max-width: 400px;
+      margin: 1px;
+      padding: 4px;
+      background: $white;
+      border: 1px solid $main-blue;
+      //@include edited;
+
+      .slider {
+        margin: 4px 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo');
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+    margin: 0;
+    font: 16px/20px 'Heebo', serif;
+    color: #000;
+    background: #fff;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style-type: none;
+}
+img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+a {
+    text-decoration: none;
+
+}
+*:focus {
+    outline: none;
+}
+button {
+    outline: none;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1200px;
+}
+.z-index {
+    z-index: 10;
+}
